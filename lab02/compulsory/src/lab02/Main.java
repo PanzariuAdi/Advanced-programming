@@ -3,16 +3,27 @@ package lab02;
 public class Main {
 
     public static void main(String[] args) {
-        Source S1 = new Source("s1");
-        Source S2 = new Source("s2");
-        Source S3 = new Source("s3");
+        Source sources[] = new Source[3];
+        Destination destinations[] = new Destination[3];
 
-        S1.setType(SourceType.FACTORY);
-        S2.setType(SourceType.WAREHOUSE);
-        S3.setType(SourceType.WAREHOUSE);
+        for(int i = 0; i < 3; i++) {
+            sources[i] = new Source("s");
+            destinations[i] = new Destination("d");
+        }
 
-        System.out.println(S1);
-        System.out.println(S2);
-        System.out.println(S3);
+        sources[0].setName("S1");
+        sources[1].setName("S2");
+        sources[2].setName("S3");
+        destinations[0].setName("D1");
+        destinations[1].setName("D1");
+        destinations[2].setName("D1");
+
+        sources[0].setSupply(10);
+        sources[1].setSupply(35);
+        sources[2].setSupply(25);
+
+        destinations[0].setDemand(20);
+        destinations[1].setDemand(25);
+        destinations[2].setDemand(25);
     }
 }
