@@ -3,6 +3,8 @@ package lab02;
 public class Source {
     private String name;
     private SourceType type;
+    private int supply;
+
 
     public Source(String name) {
         this.name = name;
@@ -23,6 +25,15 @@ public class Source {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getSupply() {
+        return supply;
+    }
+
+    public void setSupply(int supply) {
+        this.supply = supply;
+    }
+
 
     @Override
     public String toString() {
