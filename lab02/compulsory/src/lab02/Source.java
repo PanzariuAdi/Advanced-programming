@@ -4,6 +4,10 @@ public class Source {
     private String name;
     private SourceType type;
 
+    public Source(String name) {
+        this.name = name;
+    }
+
     public SourceType getType() {
         return type;
     }
