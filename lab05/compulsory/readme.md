@@ -1,0 +1,1 @@
+Laboratorul rezolvat corect.
