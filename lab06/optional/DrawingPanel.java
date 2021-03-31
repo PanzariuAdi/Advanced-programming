@@ -36,7 +36,7 @@ public class DrawingPanel extends JPanel {
         setPreferredSize(new Dimension(W, H));
         setBorder(BorderFactory.createEtchedBorder());
         shapes = new ArrayList<>();
-        
+
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -45,25 +45,33 @@ public class DrawingPanel extends JPanel {
                 repaint();
             }
         });
+
+        this.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                drawShape(e.getX(), e.getY(), index);
+                repaint();
+            }
+        });
     }
     private void drawShape(int x, int y, int index) {
-        Random rnd = new Random();
-        int radius = (int) rnd.nextInt(100);
-        int sides = (int) frame.configPanel.getSidesField().getValue();
-        int r = rnd.nextInt(255);
-        int g = rnd.nextInt(255);
-        int b = rnd.nextInt(255);
-        Color color = new Color(r, g, b);
-        Shape shape = new Shape(this.index);
+        if("Retained".equals((String)frame.configPanel.modeCombo.getSelectedItem())) {
+            Random rnd = new Random();
+            int radius = (int) rnd.nextInt(100);
+            int sides = (int) frame.configPanel.getSidesField().getValue();
+            int r = rnd.nextInt(255);
+            int g = rnd.nextInt(255);
+            int b = rnd.nextInt(255);
+            Color color = new Color(r, g, b);
+            Shape shape = new Shape(this.index);
 
-        if("Black".equals((String) frame.configPanel.colorCombo.getSelectedItem())) {
-            graphics.setColor(Color.BLACK);
-            shape.setColor(Color.BLACK);
-        } else {
-            shape.setColor(color);
-            graphics.setColor(color);
-        }
-
+            if("Black".equals((String) frame.configPanel.colorCombo.getSelectedItem())) {
+                graphics.setColor(Color.BLACK);
+                shape.setColor(Color.BLACK);
+            } else {
+                shape.setColor(color);
+                graphics.setColor(color);
+            }
         shape.setX(x);
         shape.setY(y);
         if("Regular polygon".equals((String) frame.configPanel.shapeCombo.getSelectedItem())) {
@@ -86,6 +94,10 @@ public class DrawingPanel extends JPanel {
         }
         shapes.add(shape);
         this.index++;
+        } else {
+            graphics.setColor(Color.BLACK);
+            graphics.fill(new NodeShape(x, y, 20));
+        }
     }
 
     @Override
@@ -114,5 +126,9 @@ public class DrawingPanel extends JPanel {
             else
                 graphics.fill(new NodeShape(sh.getX(), sh.getY(), sh.getRadius()));
         }
+    }
+
+    public void resetArray() {
+        shapes.clear();
     }
 }
