@@ -61,6 +61,7 @@ public class ControlPanel extends JPanel{
         frame.canvas.graphics.setColor(Color.WHITE);
         frame.canvas.graphics.fillRect(0, 0, DrawingPanel.W, DrawingPanel.H);
         frame.canvas.repaint();
+        frame.canvas.resetArray();
     }
 
     private void exit(ActionEvent e) {
