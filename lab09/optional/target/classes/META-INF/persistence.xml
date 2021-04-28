@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+<!--    <persistence-unit name="lab09" transaction-type="RESOURCE_LOCAL">-->
+<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+<!--        <class>lab09.Entity.Movie</class>-->
+
+<!--        <properties>-->
+<!--            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />-->
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe" />-->
+<!--            <property name="javax.persistence.jdbc.user" value="student" />-->
+<!--            <property name="javax.persistence.jdbc.password" value="darabani" />-->
+<!--        </properties>-->
+
+<!--    </persistence-unit>-->
+
+    <persistence-unit name="oracle" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>lab09.Entity.Movie</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+            <property name="javax.persistence.jdbc.user" value="STUDENT" />
+            <property name="javax.persistence.jdbc.password" value="darabani" />
+        </properties>
+    </persistence-unit>
+
+</persistence>
